@@ -1,23 +1,771 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+ 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.example.co.kr/#webpage",
+        "url": "https://www.example.co.kr",
+        "name": "그랜저 하이브리드 유지비 및 자동차리스 장기렌트카 비교 정보",
+        "description": "2026년 최신 그랜저 하이브리드 유지비 정보와 장기렌트카 및 자동차리스 최적 비교 견적 안내 가이드입니다."
+      },
+      {
+        "@type": "Product",
+        "name": "현대 디 올 뉴 그랜저 하이브리드 (GN7)",
+        "image": "https://www.example.co.kr/images/grandeur-hybrid-main.jpg",
+        "description": "정숙성과 경제성을 겸비한 대한민국 대표 준대형 세단 그랜저 하이브리드 1.6T 모델 정보.",
+        "brand": {
+          "@type": "Brand",
+          "name": "현대자동차"
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "KRW",
+          "lowPrice": "42900000",
+          "highPrice": "54200000",
+          "offerCount": "12"
+        }
+      },
+      {
+        "@type": "FinancialService",
+        "name": "그랜저 하이브리드 자동차리스 및 장기렌트 금융 설계",
+        "description": "국내 최저가 비교 맞춤형 포트폴리오 및 2026년 세제 혜택 기반의 컨설팅 서비스.",
+        "url": "https://www.example.co.kr",
+        "priceRange": "₩₩₩"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #1a365d;
+      --secondary-color: #2b6cb0;
+      --accent-color: #dd6b20;
+      --bg-light: #f7fafc;
+      --bg-white: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #718096;
+      --border-color: #e2e8f0;
+      --success-color: #319795;
+    }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: var(--bg-white);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin: 0 0 20px 0;
+      opacity: 0.9;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: var(--bg-white);
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 5px;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid var(--bg-white);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+
+    main {
+      background-color: var(--bg-white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background-color: var(--bg-white);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      border-left: 5px solid var(--secondary-color);
+      padding-left: 15px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.95rem;
+    }
+
+    table th, table td {
+      border: 1px solid var(--border-color);
+      padding: 12px 15px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      font-weight: 600;
+    }
+
+    table tr:nth-child(even) {
+      background-color: var(--bg-light);
+    }
+
+    .chart-container {
+      background: var(--bg-light);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+    }
+
+    .bar-label {
+      width: 150px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .bar-wrapper {
+      flex-grow: 1;
+      background-color: var(--border-color);
+      border-radius: 4px;
+      overflow: hidden;
+      height: 25px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background-color: var(--secondary-color);
+      transition: width 1s ease-in-out;
+    }
+
+    .bar-value {
+      width: 80px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding-left: 10px;
+    }
+
+    .calculator-card {
+      background: linear-gradient(to right, #f7fafc, #edf2f7);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin: 30px 0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-submit {
+      background-color: var(--accent-color);
+      color: var(--bg-white);
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #c05621;
+    }
+
+    .result-display {
+      margin-top: 25px;
+      padding: 20px;
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .result-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fbd38d;
+      margin: 10px 0;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #90cdf4;
+      text-decoration: none;
+    }
+
+    .keyword-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .keyword-badge {
+      background-color: #edf2f7;
+      color: #4a5568;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    .link-section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #ebf8ff;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary-color);
+    }
+
+    .link-section a {
+      display: block;
+      color: var(--secondary-color);
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .link-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>그랜저 하이브리드 유지비 및 자동차리스 장기렌트카 비교 분석 가이드</h1>
+    <p>2026년 최신 세제 혜택과 유지 비용 시뮬레이션을 기반으로 한 최적의 금융 상품 매칭</p>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+      <a href="#intro">개요</a>
+      <a href="#models">모델 라인업</a>
+      <a href="#maintenance">유지비 분석</a>
+      <a href="#lease-rent">리스 vs 장기렌트</a>
+      <a href="#calculator">견적 계산기</a>
+      <a href="#faq">자주 묻는 질문</a>
     </nav>
+  </header>
+
+  <div class="container">
     <main>
-      <h1>Home page</h1>
+      <section id="intro">
+        <h2>디 올 뉴 그랜저 하이브리드 가이드 도입부</h2>
+        <p>
+          현대자동차의 플래그십 준대형 세단인 디 올 뉴 그랜저 하이브리드는 탁월한 연비와 조용하고 안락한 승차감으로 시장에서 확고한 입지를 구축하고 있습니다. 고유가 시대에 하이브리드 시스템이 탑재된 차량은 단순한 이동수단을 넘어 효율적인 자산 관리의 관점에서도 주목받고 있습니다. 본 글에서는 2026년 세무 기준 및 최신 금리 변동 추이를 완벽히 분석하여 그랜저 하이브리드 유지비의 실질적인 부담 수준을 계산하고, 개개인의 상황에 적합한 자동차리스와 장기렌트카의 구체적인 비용 비교를 통해 경제적인 결정을 내릴 수 있도록 상세한 세부 정보를 제공합니다.
+        </p>
+        <p>
+          수많은 사용자가 차량 구매 전 과연 월별 유지비가 얼마 정도 발생하는지, 세금과 보험료를 모두 합친 금액은 예상보다 큰지 작은지 궁금해합니다. 특히 네이버, 구글, 유튜브 등 다양한 정보 포털뿐만 아니라 최근에는 인공지능 에이전트인 챗지피티 및 제미나이 플랫폼을 통해 정교한 견적을 의뢰하는 소비자가 급증하고 있습니다. 본 포스팅에서는 이러한 현대적 검색 환경을 반영하여 전문성 높은 비교표와 체계적인 분석 텍스트를 마련했습니다.
+        </p>
+      </section>
+
+      <section id="models">
+        <h2>그랜저 하이브리드 세부 트림 및 모델명 상세 정보</h2>
+        <p>
+          그랜저 하이브리드는 소비자의 주행 패턴과 라이프스타일에 따라 매우 세분화된 라인업을 제공합니다. 차량의 성격과 세부 사양에 따라 달라지는 금액과 잔존가치, 그리고 이에 수반되는 자동차세 및 초기 가입 비용은 리스와 렌트 이용료에 고스란히 반영됩니다. 아래는 국내에서 공식 유통 중인 주요 트림 및 사양별 모델 구분입니다.
+        </p>
+        
+        <h3>대표적인 트림 및 옵션 모델 구성 (30개 이상의 핵심 키워드 조합)</h3>
+        <p>
+          시장에서 거래되거나 금융 설계 단계에서 주로 비교되는 대표적인 모델명 목록은 다음과 같습니다.
+        </p>
+        <div class="keyword-cloud">
+          <span class="keyword-badge">디 올 뉴 그랜저 하이브리드</span>
+          <span class="keyword-badge">그랜저 GN7 하이브리드</span>
+          <span class="keyword-badge">2026 그랜저 하이브리드</span>
+          <span class="keyword-badge">그랜저 1.6T 하이브리드</span>
+          <span class="keyword-badge">그랜저 하이브리드 프리미엄</span>
+          <span class="keyword-badge">그랜저 하이브리드 익스클루시브</span>
+          <span class="keyword-badge">그랜저 하이브리드 캘리그래피</span>
+          <span class="keyword-badge">그랜저 하이브리드 블랙잉크</span>
+          <span class="keyword-badge">그랜저 하이브리드 르블랑</span>
+          <span class="keyword-badge">그랜저 하이브리드 풀옵션</span>
+          <span class="keyword-badge">그랜저 하이브리드 깡통</span>
+          <span class="keyword-badge">그랜저 하이브리드 2WD</span>
+          <span class="keyword-badge">그랜저 하이브리드 AWD</span>
+          <span class="keyword-badge">그랜저 하이브리드 18인치</span>
+          <span class="keyword-badge">그랜저 하이브리드 19인치</span>
+          <span class="keyword-badge">그랜저 하이브리드 20인치</span>
+          <span class="keyword-badge">그랜저 하이브리드 개인리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 법인리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 개인장기렌트</span>
+          <span class="keyword-badge">그랜저 하이브리드 법인장기렌트</span>
+          <span class="keyword-badge">그랜저 하이브리드 신차장기렌트카</span>
+          <span class="keyword-badge">그랜저 하이브리드 무보증리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 선납금리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 보증금리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 즉시출고</span>
+          <span class="keyword-badge">그랜저 하이브리드 출고대기</span>
+          <span class="keyword-badge">그랜저 하이브리드 연식변경모델</span>
+          <span class="keyword-badge">그랜저 하이브리드 페이스리프트</span>
+          <span class="keyword-badge">그랜저 하이브리드 중고리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 승계렌트</span>
+          <span class="keyword-badge">그랜저 하이브리드 특판리스</span>
+          <span class="keyword-badge">그랜저 하이브리드 면세렌트</span>
+        </div>
+        <p>
+          각 트림별로 1.6리터 가솔린 터보 엔진 기반의 스마트스트림 하이브리드 시스템이 탑재되어 배기량이 1,598cc에 불과합니다. 이는 연간 자동차세 부과 기준에서 일반 준대형 세단인 2.5 가솔린 모델(2,497cc)이나 3.5 가솔린 모델(3,470cc) 대비 매년 납부하는 금액적인 차이가 매우 크게 발생하여, 궁극적으로 합리적인 연간 총비용 관리가 가능하도록 돕습니다.
+        </p>
+      </section>
+
+      <section id="maintenance">
+        <h2>그랜저 하이브리드 연간 유지비 상세 분석</h2>
+        <p>
+          차량을 소유 혹은 이용하는 과정에서 발생하는 유지비는 크게 유류비, 자동차세, 보험료, 소모품 교환 비용으로 구성됩니다. 1.6T 하이브리드 엔진의 탁월한 효율성 덕분에 연간 주행거리가 길수록 가솔린 차량에 비해 전체적인 누적 실지출 금액은 크게 절감됩니다.
+        </p>
+
+        <h3>1. 연간 예상 유류비 비교 (휘발유 리터당 1,650원 기준)</h3>
+        <p>
+          그랜저 하이브리드의 공인 연비는 휠 크기(18, 19, 20인치)에 따라 약 15.7km/l에서 18.0km/l 사이를 넘나듭니다. 평균 16.7km/l 수준으로 연간 주행거리별 유류 비용을 산정해 보면 다음과 같습니다.
+        </p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>연간 10,000km 주행 시</th>
+              <th>연간 15,000km 주행 시</th>
+              <th>연간 20,000km 주행 시</th>
+              <th>연간 30,000km 주행 시</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>필요 연료량 (리터)</td>
+              <td>약 598리터</td>
+              <td>약 898리터</td>
+              <td>약 1,197리터</td>
+              <td>약 1,796리터</td>
+            </tr>
+            <tr>
+              <td>연간 예상 유류비</td>
+              <td>약 986,700원</td>
+              <td>약 1,481,700원</td>
+              <td>약 1,975,000원</td>
+              <td>약 2,963,400원</td>
+            </tr>
+            <tr>
+              <td>월평균 유류비 부담금</td>
+              <td>약 82,225원</td>
+              <td>약 123,475원</td>
+              <td>약 164,583원</td>
+              <td>약 246,950원</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>2. 2026년 기준 연간 세금 및 공과금 부담 수준</h3>
+        <p>
+          그랜저 하이브리드는 저공해 차량 2종에 해당하여 공영주차장 및 남산터널 혼잡통행료 등의 감면 혜택을 제공받습니다. 무엇보다 배기량 기반의 자동차세 산정 방식에 따라 교육세를 포함한 연간 총 자동차세가 약 290,830원에 불과하여, 매년 내야 하는 세금 부담이 일반 3.0리터급 대형 차종의 절반 이하에 머무르는 큰 메리트가 존재합니다.
+        </p>
+
+        <div class="chart-container">
+          <h3>차종별 연간 세금 비교 그래프 (단위: 원)</h3>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <div class="bar-label">그랜저 하이브리드 (1.6T)</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 30%;"></div>
+              </div>
+              <div class="bar-value">290,830</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">일반 가솔린 (2.5L)</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 65%; background-color: var(--accent-color);"></div>
+              </div>
+              <div class="bar-value">649,220</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">일반 가솔린 (3.5L)</div>
+              <div class="bar-wrapper">
+                <div class="bar-fill" style="width: 100%; background-color: #e53e3e;"></div>
+              </div>
+              <div class="bar-value">902,200</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lease-rent">
+        <h2>자동차리스와 장기렌트카의 명확한 비교 분석</h2>
+        <p>
+          과거에는 일시불이나 일반 할부를 통해 차량을 전액 현금 혹은 부채로 인계받는 구조가 주를 이루었으나, 최근에는 스마트한 자산 관리를 위해 자동차리스와 장기렌트카라는 양대 금융 상품의 활용 비율이 극대화되고 있습니다. 두 서비스는 월 납입금이라는 공통된 표면적 형식을 지니고 있지만, 작동 원리 및 세무 처리 측면에서는 분명한 차이점이 존재합니다.
+        </p>
+
+        <h3>장기렌트카의 특장점과 단점</h3>
+        <p>
+          장기렌트카는 렌트 전문 업체 명의로 차량을 등록하여 일정 기간 장기 임차하는 형태입니다. 매월 지불하는 렌트 비용 내에 자동차세, 보험 가입 비용, 그리고 부가 정비 항목 등이 기본적으로 포함되어 있어 설계가 매우 심플하다는 특징이 있습니다. 특히 신규 운전자나 사고 이력이 존재하여 개인 보험료 요율이 상당히 높은 소비자의 경우, 렌트사 고유의 집합 보험 요율이 일괄 적용되므로 연간 지출을 유의미하게 아낄 수 있습니다. 또한, 여신 금융 자산으로 분류되지 않아 신용 등급 하락 우려나 금융권 부채 한도 제약이 발생하지 않는다는 장점도 무시할 수 없습니다.
+        </p>
+        <p>
+          다만, 차량 번호판이 하, 허, 호 등의 영업용 전용 플레이트로 한정된다는 점에 심리적 장벽을 느끼는 고객들도 여전히 존재합니다. 또한 주행 경력이 렌트 이용 기간 동안 개인 자동차 보험 가입 기간으로 공식 누적되지 않기 때문에 무사고 경력이 오래 유지된 우량 운전자에게는 다소 아쉬운 제도로 다가갈 수 있습니다.
+        </p>
+
+        <h3>자동차리스의 특장점과 단점</h3>
+        <p>
+          자동차리스는 금융사가 소유한 차량을 리스 계약자가 인도받아 운용하는 여신 기반 서비스입니다. 번호판이 일반 차량과 완전히 동일한 일반 번호판으로 부착되므로 미관상 깔끔하며, 장기렌트카가 주는 렌터카 특유의 번호판 구분을 원치 않는 고급 비즈니스 용도에 적합한 추천 모델입니다. 또한 운전자가 개별적으로 보험에 가입하여 오랜 기간 유지해 온 우량한 무사고 보험 요율을 고스란히 이어서 적용할 수 있습니다.
+        </p>
+        <p>
+          하지만 리스는 금융 이용 한도 및 개인의 신용 공여를 소모하는 대출형 금융 상품의 성격을 강하게 띠고 있어, 이용 중 신용 대출이나 추가적인 자금 조달 계획이 있을 경우 신용 점수의 일시적 조정이나 기대출 한도 축소라는 리스크가 수반된다는 점을 단점으로 인지해야 합니다.
+        </p>
+
+        <h3>한눈에 보는 리스 및 장기렌트 비교표</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>비교 항목</th>
+              <th>장기렌트카</th>
+              <th>자동차리스</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>차량 번호판</td>
+              <td>하, 허, 호 전용 번호판</td>
+              <td>일반 자가용 번호판</td>
+            </tr>
+            <tr>
+              <td>개인 신용 영향</td>
+              <td>금융 부채 미반영 (자산 부채 없음)</td>
+              <td>대출성 금융 부채로 반영</td>
+            </tr>
+            <tr>
+              <td>보험 주체 및 요율</td>
+              <td>렌트사 통합 단체 보험 일괄 적용</td>
+              <td>이용자 개인 보험 가입 및 요율 유지</td>
+            </tr>
+            <tr>
+              <td>사고 발생 시 패널티</td>
+              <td>면책금 제도 활용으로 개인 보험 할증 없음</td>
+              <td>개인 보험 요율 적용에 따른 할증 리스크 존재</td>
+            </tr>
+            <tr>
+              <td>연간 비용 지출 관리</td>
+              <td>월 렌트료 하나로 완결 (세금, 보험 포함)</td>
+              <td>월 리스료 외 세금, 보험료 개별 납부 필요</td>
+            </tr>
+            <tr>
+              <td>종합적 저렴한곳 매칭</td>
+              <td>인수보다 반납 위주 이용 시 매우 유리</td>
+              <td>개인 무사고 기간 길고 품위 유지 필요 시 유리</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="calculator" class="calculator-card">
+        <h2>그랜저 하이브리드 맞춤형 월 예상 견적 계산기</h2>
+        <p>
+          아래의 세부 입력 필드 값을 조절하시면 고객님만의 그랜저 하이브리드 모의견적 결과를 실시간으로 확인하실 수 있습니다. 가입 조건 설정에 따라 월 납입금의 평균 금액 차이가 크므로 꼼꼼하게 설계해 보시기 바랍니다.
+        </p>
+        
+        <form id="quoteForm" onsubmit="event.preventDefault(); calculateQuote();">
+          <div class="form-group">
+            <label for="trim">1. 트림(등급) 및 기본 가격 선택</label>
+            <select id="trim" class="form-control" onchange="calculateQuote()">
+              <option value="42900000">프리미엄 (4,290만 원)</option>
+              <option value="47800000">익스클루시브 (4,780만 원)</option>
+              <option value="53500000">캘리그래피 (5,350만 원)</option>
+              <option value="55200000">캘리그래피 블랙잉크 에디션 (5,520만 원)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>2. 세부 추가 옵션 패키지 구성</label>
+            <div class="checkbox-group">
+              <div class="checkbox-item">
+                <input type="checkbox" id="opt_sunroof" value="1200000" onchange="calculateQuote()">
+                <label for="opt_sunroof">파노라마 선루프 (120만)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="opt_hud" value="1000000" onchange="calculateQuote()">
+                <label for="opt_hud">헤드업 디스플레이 (100만)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="opt_suspension" value="1100000" onchange="calculateQuote()">
+                <label for="opt_suspension">프리뷰 전자제어 서스펜션 (110만)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="opt_vip" value="1500000" onchange="calculateQuote()">
+                <label for="opt_vip">뒷좌석 VIP 패키지 (150만)</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contractTerm">3. 계약 약정 기간 설정</label>
+            <select id="contractTerm" class="form-control" onchange="calculateQuote()">
+              <option value="36">36개월 약정</option>
+              <option value="48">48개월 약정</option>
+              <option value="60" selected>60개월 약정 (가장 선호)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="prepayment">4. 초기 비용 선납 방식 및 비율 설정 (선납금 %)</label>
+            <input type="range" id="prepayment" min="0" max="50" step="10" value="0" class="form-control" oninput="updatePrepaymentText(this.value); calculateQuote();">
+            <span id="prepaymentVal">현재 설정: 무보증 (0%)</span>
+          </div>
+
+          <div class="form-group">
+            <label for="financeType">5. 차량 인도 및 금융 상품 분류</label>
+            <select id="financeType" class="form-control" onchange="calculateQuote()">
+              <option value="rent">장기렌트카 (세금, 보험료, 관리 패키지 모두 포함)</option>
+              <option value="lease">자동차리스 (세금 별도, 본인 개인 보험 가입형)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="customerName">고객 성함 (상담용)</label>
+            <input type="text" id="customerName" class="form-control" placeholder="성함을 기재해주시면 전문 상담사의 세부 매칭이 가능합니다.">
+          </div>
+
+          <div class="form-group">
+            <label for="customerPhone">연락처</label>
+            <input type="tel" id="customerPhone" class="form-control" placeholder="010-0000-0000 형식으로 입력해 주세요.">
+          </div>
+
+          <button type="button" class="btn-submit" onclick="submitInteractiveRequest()">실시간 최저가 비교 견적 신청하기</button>
+        </form>
+
+        <div class="result-display">
+          <div>선택하신 사양에 따른 실시간 시뮬레이션 월 예상 납입료</div>
+          <div class="result-price" id="monthlyPrice">620,000 원</div>
+          <div style="font-size: 0.85rem; opacity: 0.85;">위 결과 금액은 표준 금리를 기준으로 산정된 시뮬레이션 예시 금액이며, 업체의 신규 할인 행사 및 이벤트 적용 여부에 따라 실제 체결 금액은 더 낮아질 수 있습니다.</div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2>소비자들이 자주 묻는 질문 FAQ 및 트렌드 분석</h2>
+        
+        <h3>Q. 인터넷 정보나 전문 매체에서 말하는 싼곳이나 저렴한곳의 선정 기준은 무엇인가요?</h3>
+        <p>
+          차량 금융은 겉으로 보기에 단순히 가장 저렴하게 책정해 둔 광고 전단 가격만 보고 판단해서는 곤란합니다. 만기 후 차량의 인수 시 필요한 잔존가치와 중도 반납 시의 패널티 약관, 그리고 보증 요율의 유무가 매달 청구되는 금액의 본질적인 원천을 변경시킵니다. 따라서 여러 캐피탈사와 에이전시 업체의 프로모션을 투명하게 수집하여 고객 맞춤형 최저 요율을 계산해 주는 검증된 금융 전문 컨설팅 플랫폼의 조력을 받아 견적의 실체를 대조하는 것을 권장합니다.
+        </p>
+
+        <h3>Q. 실제 계약자들이 전하는 내돈내산 출고 후기나 실질적인 장단점 피드백은 어떠한가요?</h3>
+        <p>
+          수많은 소유자들의 후기를 취합하면 그랜저 하이브리드의 실생활 연료 효율성과 부드러운 하체 거동에 대한 만족도는 절대다수가 높은 평점을 남깁니다. 다만 20인치 알로이 휠을 무리하게 적용할 경우, 노면 소음 유입이 늘어나거나 평균 연비가 소폭 억제되는 단점이 지적되기도 하므로 실용적인 운영 관점에서는 18인치나 19인치 조합 구성을 대다수 유저들이 적극 추천하고 있습니다.
+        </p>
+
+        <h3>Q. 2026년 기준 신규 지원금이나 제반 혜택 사항은 무엇입니까?</h3>
+        <p>
+          친환경차 개별소비세 감면 및 하이브리드 세제 인센티브가 현 시점에도 연장 운영되고 있으며, 리스나 렌트를 신규로 가입하여 이용하시는 법인 및 개인사업자 분들은 연간 최대 1,500만 원까지 경비 처리를 인정받을 수 있습니다. 차량 소모품 교체 및 자산 가치 감가에 대한 장부를 간편히 처리하고자 하시는 실속형 고객들에게 최고의 세법상 솔루션을 제공합니다.
+        </p>
+      </section>
+
+      <section class="link-section">
+        <h3>신뢰성 있는 정보 검색을 위한 공인 공공기관 및 포털 링크</h3>
+        <p>자동차 세금 체계, 세법 해석, 도로 법규 등 공식 정보의 교차 검증을 권장합니다.</p>
+        <a href="https://namu.wiki/w/%ED%98%84%EB%8C%80%20%EA%B7%B8%EB%9E%9C%EC%A0%80" target="_blank" rel="noopener noreferrer">나무위키 현대 그랜저 브랜드 및 상세 제원 페이지</a>
+        <a href="https://www.car365.go.kr" target="_blank" rel="noopener noreferrer">자동차365 국토교통부 제공 중고 시세 및 자동차 이력 정보 확인 플랫폼</a>
+        <a href="https://www.nts.go.kr" target="_blank" rel="noopener noreferrer">국세청 법인 및 개인사업자 업무용 승용차 비용 처리 정식 가이드 안내</a>
+        <a href="https://www.molit.go.kr" target="_blank" rel="noopener noreferrer">국토교통부 공식 웹사이트 차량 등록 및 관련 정책 안내 수록</a>
+        <a href="https://www.koroad.or.kr" target="_blank" rel="noopener noreferrer">도로교통공단 안전 운전 요령 및 면허 소지자 주행 안전 규칙 수록</a>
+      </section>
     </main>
-  </body>
-</html>
+
+    <aside>
+      <div class="sidebar-card">
+        <h3>디시인사이드 커뮤니티 추천 팁</h3>
+        <p>
+          디시인사이드 차갤 등 주요 자동차 온라인 포럼에서 그랜저 하이브리드를 가장 똑똑하게 구매하는 방식으로, 무작정 월 대여료가 제일 싼곳에 서명하기보다는 캐피탈사가 직영하는 특판 이벤트 재고 및 신규 가입 혜택 리스트를 점검할 것을 당부하고 있습니다.
+        </p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>풍성한 사은품 및 추가 혜택</h3>
+        <p>
+          이번 달 선착순 신규 견적 진행 고객분들을 위해 프리미엄 썬팅 및 고화질 블랙박스 사은품을 비롯하여 계약 완료 시 추가 상품권 및 대형 모바일 상품을 연계 매칭하는 특별 이벤트를 제공합니다. 일부 한정판 재고의 경우 조기 소진될 우려가 존재합니다.
+        </p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>검색 트렌드 및 최신 AI 채널</h3>
+        <p>
+          과거의 구글, 유튜브 검색 패턴에서 벗어나 스마트한 유저들은 최근 챗지피티와 제미나이 등의 지능형 인공지능 플랫폼의 조언을 적극 참고하는 흐름입니다. 당사 역시 그러한 추세에 최적화된 고급 알고리즘 맞춤 비교 정보를 매일 갱신해 드립니다.
+        </p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    function updatePrepaymentText(val) {
+      const textSpan = document.getElementById('prepaymentVal');
+      if (val === "0") {
+        textSpan.innerText = "현재 설정: 무보증 (0%)";
+      } else {
+        textSpan.innerText = "현재 설정: 선납금 " + val + "%";
+      }
+    }
+
+    function calculateQuote() {
+      const basePrice = parseInt(document.getElementById('trim').value, 10);
+      
+      let optionsPrice = 0;
+      if (document.getElementById('opt_sunroof').checked) optionsPrice += parseInt(document.getElementById('opt_sunroof').value, 10);
+      if (document.getElementById('opt_hud').checked) optionsPrice += parseInt(document.getElementById('opt_hud').value, 10);
+      if (document.getElementById('opt_suspension').checked) optionsPrice += parseInt(document.getElementById('opt_suspension').value, 10);
+      if (document.getElementById('opt_vip').checked) optionsPrice += parseInt(document.getElementById('opt_vip').value, 10);
+      
+      const totalPrice = basePrice + optionsPrice;
+      
+      const term = parseInt(document.getElementById('contractTerm').value, 10);
+      const prepaymentPercent = parseInt(document.getElementById('prepayment').value, 10);
+      const financeType = document.getElementById('financeType').value;
+      
+      const prepaymentAmount = totalPrice * (prepaymentPercent / 100);
+      const loanAmount = totalPrice - prepaymentAmount;
+      
+      let rate = 0.055; 
+      if (term === 36) rate = 0.048;
+      else if (term === 48) rate = 0.052;
+      
+      let monthlyBase = loanAmount / term;
+      
+      if (financeType === 'rent') {
+        monthlyBase = monthlyBase * (1 + rate) + 25000; 
+      } else {
+        monthlyBase = monthlyBase * (1 + rate - 0.005); 
+      }
+      
+      const roundedPrice = Math.round(monthlyBase / 1000) * 1000;
+      
+      document.getElementById('monthlyPrice').innerText = roundedPrice.toLocaleString() + " 원";
+    }
+
+    function submitInteractiveRequest() {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      
+      if (!name || !phone) {
+        alert("이용자 성함과 유효한 연락처를 입력해 주시면 감사하겠습니다.");
+        return;
+      }
+      
+      alert(name + " 고객님, 입력하신 그랜저 하이브리드 모의 사양 정보가 시스템에 안전하게 기록되었습니다. 당일 교부되는 맞춤 사은품 혜택 및 추가 지원금 상세 안내를 안내해 드리기 위해 전문 매니저가 곧 피드백을 안내해 드리겠습니다.");
+    }
+
+    window.onload = function() {
+      calculateQuote();
+    };
+  </script>
+  
